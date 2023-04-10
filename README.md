@@ -24,7 +24,7 @@ On Windows, Vagrant may require an updated version of [Powershell](https://docs.
 
 ## How to use
 - Create a directory to be the home of your Virtual Machine;
-- Download [this Vagrantfile](https://github.com/arthe1612/mysql8-ol74/blob/master/Vagrantfile) to this new directory;
+- Download [this Vagrantfile](https://raw.githubusercontent.com/arthe1612/mysql8-ol74/master/Vagrantfile) to this new directory;
 - Install Oracle Linux 7.7 box (image) with ```vagrant box add --name ol77 http://yum.oracle.com/boxes/oraclelinux/ol77/ol77.box```.
   - It will download Oracle Linux 7 (~410MB), so this will take several minutes to finish;
   - You can check [Oracle Boxes website](http://yum.oracle.com/boxes) for updates;
