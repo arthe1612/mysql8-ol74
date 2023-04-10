@@ -5,7 +5,7 @@
 
 #Modify these variables as you wish
 DIR_TO_DOWNLOAD=/opt/mysql/packages
-REPO_RPM_URL=http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 
+REPO_RPM_URL=http://dev.mysql.com/get/mysql80-community-release-el7-7.noarch.rpm 
 
 set -e    # stop script execution on any error
 
@@ -16,10 +16,10 @@ echo "Downloading YUM repo..."
 cd $DIR_TO_DOWNLOAD
 wget $REPO_RPM_URL
 echo "Installing YUM repo..."
-yum -y localinstall mysql57-community-release-el7*.noarch.rpm
+yum -y localinstall mysql80-community-release-el7*.noarch.rpm
 echo "Listing enabled repos for mysql..."
 yum repolist enabled | grep mysql
 
 #You can enable/disable repos with:
-#yum-config-manager --disable mysql56-community
-#yumconfig-manager ---enable mysql57-community
+#yum-config-manager --disable mysql80-community
+#yumconfig-manager ---enable mysql80-community

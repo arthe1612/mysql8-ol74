@@ -1,11 +1,11 @@
-MySQL 5.7 and Oracle Linux 7.4
+MySQL 8.0 and Oracle Linux 7.4
 ==============================
 
-Environment with MySQL Server 5.7 and Oracle Linux 7 using Vagrant + Virtualbox, recommended for testing or training purposes.
+Environment with MySQL Server 8.0 and Oracle Linux 7 using Vagrant + Virtualbox, recommended for testing or training purposes.
 
 
 ## Synopsis
-These are files to create a environment with [MySQL Server 5.7](https://dev.mysql.com/doc/refman/5.7/en/) on [Oracle Linux 7](https://www.oracle.com/linux/index.html) using [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/).
+These are files to create a environment with [MySQL Server 8.0](https://dev.mysql.com/doc/refman/8.0/en/) on [Oracle Linux 7](https://www.oracle.com/linux/index.html) using [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/).
 
 
 ## Architecture
@@ -24,7 +24,7 @@ On Windows, Vagrant may require an updated version of [Powershell](https://docs.
 
 ## How to use
 - Create a directory to be the home of your Virtual Machine;
-- Download [this Vagrantfile](https://raw.githubusercontent.com/alastori/mysql57-ol74/master/Vagrantfile) to this new directory;
+- Download [this Vagrantfile](https://github.com/arthe1612/mysql8-ol74/master/Vagrantfile) to this new directory;
 - Install Oracle Linux 7.4 box (image) with ```vagrant box add --name ol74 http://yum.oracle.com/boxes/oraclelinux/ol74/ol74.box```.
   - It will download Oracle Linux 7 (~410MB), so this will take several minutes to finish;
   - You can check [Oracle Boxes website](http://yum.oracle.com/boxes) for updates;
@@ -53,4 +53,3 @@ rm -Rf /var/lib/mysql*
 rm -f /var/log/mysqld.log
 rm -f /etc/my.cnf
 ```
-

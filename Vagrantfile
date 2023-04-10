@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
   
   config.vm.provider "virtualbox" do |vb|
-      vb.memory = 1024
+      vb.memory = 4096
       vb.cpus = 2
   end
   
@@ -17,9 +17,9 @@ Vagrant.configure(2) do |config|
     mysqlserver.vm.hostname = "vmmysqlserver"
     mysqlserver.vm.network :forwarded_port, host: 23306, guest: 3306
     
-    mysqlserver.vm.provision :shell, path: "https://raw.githubusercontent.com/alastori/mysql57-ol74/master/download-git-repo.sh", privileged: true
-    mysqlserver.vm.provision :shell, path: "https://raw.githubusercontent.com/alastori/mysql57-ol74/master/provision-mysql-yum-repo-el7.sh", privileged: true
-    mysqlserver.vm.provision :shell, path: "https://raw.githubusercontent.com/alastori/mysql57-ol74/master/provision-mysql-community-57-el7-yum.sh", privileged: true
+    mysqlserver.vm.provision :shell, path: "https://github.com/arthe1612/mysql8-ol74/master/download-git-repo.sh", privileged: true
+    mysqlserver.vm.provision :shell, path: "https://github.com/arthe1612/mysql8-ol74/master/provision-mysql-yum-repo-el7.sh", privileged: true
+    mysqlserver.vm.provision :shell, path: "https://github.com/arthe1612/mysql8-ol74/master/provision-mysql-community-80-el7-yum.sh", privileged: true
 
   end  
   

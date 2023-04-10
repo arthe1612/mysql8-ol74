@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Bash script to provision MySQL 5.7 Community via mysql.com public yum repository in Enterprise Linux 7.x
+#Bash script to provision MySQL 8 Community via mysql.com public yum repository in Enterprise Linux 7.x
 #MySQL yum repository from http://dev.mysql.com/downloads/repo/yum/ must already be installed
 #Run this script as root
 
@@ -12,11 +12,11 @@ REMOTE_PWD="Remote#123"
 
 mkdir -p $DIR_TO_DOWNLOAD
 
-#Next lines install MySQL Server 5.7 RC from YUM repository at mysql.com
+#Next lines install MySQL Server 8.0 RC from YUM repository at mysql.com
 echo "Listing enabled YUM repos for MySQL..."
 yum repolist enabled | grep mysql
-echo "Enable MySQL 5.7 repo just in case..."
-yum-config-manager --enable mysql57-community
+echo "Enable MySQL 8 repo just in case..."
+yum-config-manager --enable mysql80-community
 echo "Installing MySQL Server via YUM..."
 yum -y --nogpgcheck install mysql-server
 
