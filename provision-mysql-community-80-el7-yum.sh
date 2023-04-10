@@ -43,9 +43,9 @@ mysql -u$REMOTE_USER -p"$REMOTE_PWD" -e"SELECT USER(), CURRENT_USER();"
 
 #Creating 'developer' user
 mysql -uroot -p$MYSQL_PWD -e"                                                 \
-SET GLOBAL validate_password_policy = LOW;                                    \
+SET GLOBAL validate_password.policy = LOW;                                    \
 CREATE USER ""'"$DEVELOPER_USER"'""@'%' IDENTIFIED BY ""'"$DEVELOPER_PWD"'""; \
 GRANT ALL PRIVILEGES ON *.* TO ""'"$DEVELOPER_USER"'""@'%' WITH GRANT OPTION; \
-SET GLOBAL validate_password_policy = MEDIUM;                                 \
+SET GLOBAL validate_password.policy = MEDIUM;                                 \
 FLUSH PRIVILEGES;                                                             "
 mysql -u$DEVELOPER_USER -p"$DEVELOPER_PWD" -e"SELECT USER(), CURRENT_USER();"
