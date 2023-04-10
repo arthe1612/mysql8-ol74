@@ -19,7 +19,8 @@ echo "Enable MySQL 8 repo just in case..."
 yum-config-manager --enable mysql80-community
 echo "Installing MySQL Server via YUM..."
 yum -y --nogpgcheck install mysql-server
-
+echo 'sql-mode = ""' >> /etc/my.cnf
+echo 'lower_case_table_names = 1' >> /etc/my.cnf
 #Starting MySQL Server
 echo "Starting MySQL for the first time..."
 service mysqld start
