@@ -14,9 +14,11 @@ DEVELOPER_PWD="m4pNC4iL9iCxLYcYAve9"
 
 mkdir -p $DIR_TO_DOWNLOAD
 
-#Next lines install tools
+#Dev tools
 echo "Installing utilities..."
-yum -y install htop nano gperftools-libs
+yum -y install htop nano gperftools-libs lsof
+wget https://downloads.percona.com/downloads/percona-toolkit/3.5.2/binary/redhat/7/x86_64/percona-toolkit-3.5.2-2.el7.x86_64.rpm
+yum -y install percona-toolkit-3.5.2-2.el7.x86_64.rpm
 
 #Next lines install MySQL Server 8.0 RC from YUM repository at mysql.com
 echo "Listing enabled YUM repos for MySQL..."
