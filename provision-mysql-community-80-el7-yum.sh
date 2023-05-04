@@ -23,6 +23,7 @@ echo "Installing MySQL Server via YUM..."
 yum -y --nogpgcheck install mysql-server
 echo 'sql-mode = ""' >> /etc/my.cnf
 echo 'lower_case_table_names = 1' >> /etc/my.cnf
+echo 'default-authentication-plugin=mysql_native_password' >> /etc/my.cnf
 #Starting MySQL Server
 echo "Starting MySQL for the first time..."
 service mysqld start
