@@ -23,7 +23,6 @@ echo "Installing MySQL Server via YUM..."
 yum -y --nogpgcheck install mysql-server
 echo 'sql-mode = ""' >> /etc/my.cnf
 echo 'lower_case_table_names = 1' >> /etc/my.cnf
-echo 'default-authentication-plugin = mysql_native_password' >> /etc/my.cnf
 #Starting MySQL Server
 echo "Starting MySQL for the first time..."
 service mysqld start
@@ -38,13 +37,15 @@ mysql -uroot -p"$MYSQL_PWD" -e"SELECT @@hostname,@@port,@@version;"
 
 #Creating 'remote' user
 mysql -uroot -p$MYSQL_PWD -e"                                              \
-CREATE USER ""'"$REMOTE_USER"'""@'%' IDENTIFIED BY ""'"$REMOTE_PWD"'"" AND IDENTIFIED WITH mysql_native_password;    \
+CREATE USER ""'"$REMOTE_USER"'""@'%' IDENTIFIED BY ""'"$REMOTE_PWD"'"";    \
 GRANT ALL PRIVILEGES ON *.* TO ""'"$REMOTE_USER"'""@'%' WITH GRANT OPTION; "
+mysql -u$REMOTE_USER -p"$REMOTE_PWD" -e"SELECT USER(), CURRENT_USER();"
 
 #Creating 'developer' user
 mysql -uroot -p$MYSQL_PWD -e"                                                 \
 SET GLOBAL validate_password.policy = LOW;                                    \
-CREATE USER ""'"$DEVELOPER_USER"'""@'%' IDENTIFIED BY ""'"$DEVELOPER_PWD"'"" AND IDENTIFIED WITH mysql_native_password; \
+CREATE USER ""'"$DEVELOPER_USER"'""@'%' IDENTIFIED BY ""'"$DEVELOPER_PWD"'""; \
 GRANT ALL PRIVILEGES ON *.* TO ""'"$DEVELOPER_USER"'""@'%' WITH GRANT OPTION; \
 SET GLOBAL validate_password.policy = MEDIUM;                                 \
 FLUSH PRIVILEGES;                                                             "
+mysql -u$DEVELOPER_USER -p"$DEVELOPER_PWD" -e"SELECT USER(), CURRENT_USER();"
