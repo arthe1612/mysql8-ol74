@@ -49,3 +49,4 @@ GRANT ALL PRIVILEGES ON *.* TO ""'"$DEVELOPER_USER"'""@'%' WITH GRANT OPTION; \
 SET GLOBAL validate_password.policy = MEDIUM;                                 \
 FLUSH PRIVILEGES;                                                             "
 mysql -u$DEVELOPER_USER -p"$DEVELOPER_PWD" -e"SELECT USER(), CURRENT_USER();"
+mysql -uroot -p$MYSQL_PWD -e"UPDATE mysql.user SET plugin = 'mysql_native_password' WHERE User = 'root';"
