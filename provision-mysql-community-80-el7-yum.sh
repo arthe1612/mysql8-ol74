@@ -14,6 +14,10 @@ DEVELOPER_PWD="m4pNC4iL9iCxLYcYAve9"
 
 mkdir -p $DIR_TO_DOWNLOAD
 
+#Next lines install tools
+echo "Installing utilities..."
+yum -y install htop nano gperftools-libs
+
 #Next lines install MySQL Server 8.0 RC from YUM repository at mysql.com
 echo "Listing enabled YUM repos for MySQL..."
 yum repolist enabled | grep mysql
@@ -24,8 +28,10 @@ yum -y --nogpgcheck install mysql-server
 echo 'sql-mode = ""' >> /etc/my.cnf
 echo 'lower_case_table_names = 1' >> /etc/my.cnf
 echo 'default-authentication-plugin=mysql_native_password' >> /etc/my.cnf
+echo 'Environment="LD_PRELOAD=/usr/lib64/libtcmalloc.so.4.4.5"' >> /lib/systemd/system/mysqld.service
 #Starting MySQL Server
 echo "Starting MySQL for the first time..."
+systemctl daemon-reload
 service mysqld start
 sleep 8
 service mysqld status
