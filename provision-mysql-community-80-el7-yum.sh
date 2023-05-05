@@ -30,6 +30,7 @@ yum -y --nogpgcheck install mysql-server
 echo 'sql-mode = ""' >> /etc/my.cnf
 echo 'lower_case_table_names = 1' >> /etc/my.cnf
 echo 'default-authentication-plugin=mysql_native_password' >> /etc/my.cnf
+echo 'skip-log-bin' >> /etc/my.cnf
 echo 'Environment="LD_PRELOAD=/usr/lib64/libtcmalloc.so.4.4.5"' >> /lib/systemd/system/mysqld.service
 #Starting MySQL Server
 echo "Starting MySQL for the first time..."
